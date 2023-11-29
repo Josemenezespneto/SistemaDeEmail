@@ -1,5 +1,6 @@
 package com.sistemaDeEmail.sistemaDeEmail.application;
 
+import com.sistemaDeEmail.sistemaDeEmail.adapters.EmailSenderGateway;
 import com.sistemaDeEmail.sistemaDeEmail.core.EmailSenderUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 
