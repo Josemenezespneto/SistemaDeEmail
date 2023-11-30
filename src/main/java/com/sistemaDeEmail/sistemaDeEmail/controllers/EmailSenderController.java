@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.sistemaDeEmail.sistemaDeEmail.core.EmailRequest;
 
 @RestController
 @RequestMapping("/api/email")
@@ -21,10 +22,10 @@ public class EmailSenderController {
     }
 
     @PostMapping()
-    public ResponseEntity<String> sendEmail(RequestBody EmailRequest request){
+    public ResponseEntity<String> sendEmail(@RequestBody EmailRequest request){
         try {
             this.emailSenderService.sendEmail(request.to(), request.subject(), request.body());
-            return new ResponseEntity.ok("email send successfully");
+            return ResponseEntity.ok("email send successfully");
         }catch (EmailServiceException ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error while sending email");
         }
